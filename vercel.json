@@ -2,22 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "/mealPlannerBackend/app.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "/mealPlannerFrontend/index.html",
-      "use": "@vercel/static"
+      "src": "mealPlannerBackend/app.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb" }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/mealPlannerBackend/app.py"
+      "dest": "mealPlannerBackend/app.py"
     },
     {
       "src": "/(.*)",
-      "dest": "/mealPlannerFrontend/index.html"
+      "dest": "mealPlannerFrontend/$1"
     }
   ]
 }
