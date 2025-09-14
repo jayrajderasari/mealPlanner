@@ -14,7 +14,7 @@ services:
         value: 3.11.4
 
   # A Static Site for the frontend
-  - type: static_site
+  - type: web
     name: meal-planner-frontend
     plan: free
     region: oregon
