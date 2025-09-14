@@ -1,29 +1,30 @@
 services:
-  # A Python web service
+  # A Python web service for the backend API
   - type: web
-    name: meal-planner-backend
+    name: meal-planner-api
     env: python
-    plan: free # You can choose a paid plan for more resources
-    # The region to deploy to.
+    plan: free
     region: oregon
-    # Tell Render how to build your project.
     buildCommand: "pip install -r mealPlannerBackend/requirements.txt"
-    # The command to start your Gunicorn server.
     startCommand: "gunicorn --chdir mealPlannerBackend app:app"
     envVars:
       - key: MONGODB_URI
-        sync: false # Keep this secret
+        sync: false # This will be set as a secret in the Render dashboard
       - key: PYTHON_VERSION
-        value: 3.11.4 # Specify a Python version
+        value: 3.11.4
 
-  # A static site for the frontend
-  - type: web
+  # A Static Site for the frontend
+  - type: static_site
     name: meal-planner-frontend
     plan: free
     region: oregon
-    # Where the static files are located.
-    staticPublishPath: mealPlannerFrontend
-    # Rewrite all requests to index.html for a Single-Page App experience.
-    staticRewrite:
-      source: /
-      destination: /index.html
+    # The root of our static assets
+    staticPublishPath: ./mealPlannerFrontend
+    # Add rewrite rules for the frontend
+    rewrites:
+      # Proxy API requests to the backend service
+      - source: /api/:path*
+        destination: https://meal-planner-api.onrender.com/:path*
+      # Fallback for Single-Page App routing
+      - source: /*
+        destination: /index.html
