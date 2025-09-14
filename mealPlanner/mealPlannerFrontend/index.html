@@ -27,11 +27,94 @@
   <div class="container p-3 text-center">
 
     <select id="cuisineInput" class="form-select" aria-label="Default select example">
-      <option selected>Open this select menu</option>
+      <option selected>Select Cuisine</option>
       <option value="southIndian">South Indian</option>
       <option value="northIndian">North Indian</option>
+      <option value="gujarati">Gujarati</option>
+      <option value="fastFood">Fast Food</option>
+      <option value="chinese">Chinese</option>
+      <option value="mexican">Mexican</option>
     </select>
-    <input id="submitButton" class="btn btn-primary m-2" type="submit" value="Submit"> <br>
+
+    <select id="mealTypeInput" class="form-select mt-2" aria-label="Default select example">
+        <option selected>Select Meal Type</option>
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+        <option value="snack">Snack</option>
+    </select>
+
+    <div class="mt-2">
+        <label for="cookingTimeInput" class="form-label">Max Cooking Time (in minutes):</label>
+        <input type="number" class="form-control" id="cookingTimeInput" placeholder="e.g., 30">
+    </div>
+
+    <div class="accordion mt-3" id="ingredientsAccordion">
+        <!-- Vegetables -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="vegetables-heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vegetables-collapse" aria-expanded="false" aria-controls="vegetables-collapse">
+                    Select Vegetables
+                </button>
+            </h2>
+            <div id="vegetables-collapse" class="accordion-collapse collapse" aria-labelledby="vegetables-heading" data-bs-parent="#ingredientsAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-secondary btn-sm mb-2" id="select-all-vegetables">Select All</button>
+                    <button class="btn btn-outline-secondary btn-sm mb-2" id="clear-vegetables">Clear</button>
+                    <div id="vegetables-checkboxes"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Flours/Cereals/Pulses -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flours-heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flours-collapse" aria-expanded="false" aria-controls="flours-collapse">
+                    Select Flours, Cereals & Pulses
+                </button>
+            </h2>
+            <div id="flours-collapse" class="accordion-collapse collapse" aria-labelledby="flours-heading" data-bs-parent="#ingredientsAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-secondary btn-sm mb-2" id="select-all-flours">Select All</button>
+                    <button class="btn btn-outline-secondary btn-sm mb-2" id="clear-flours">Clear</button>
+                    <div id="flours-checkboxes"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Spices -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="spices-heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#spices-collapse" aria-expanded="false" aria-controls="spices-collapse">
+                    Select Spices
+                </button>
+            </h2>
+            <div id="spices-collapse" class="accordion-collapse collapse" aria-labelledby="spices-heading" data-bs-parent="#ingredientsAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-secondary btn-sm mb-2" id="select-all-spices">Select All</button>
+                    <button class="btn btn-outline-secondary btn-sm mb-2" id="clear-spices">Clear</button>
+                    <div id="spices-checkboxes"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Dairy -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="dairy-heading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dairy-collapse" aria-expanded="false" aria-controls="dairy-collapse">
+                    Select Dairy
+                </button>
+            </h2>
+            <div id="dairy-collapse" class="accordion-collapse collapse" aria-labelledby="dairy-heading" data-bs-parent="#ingredientsAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-secondary btn-sm mb-2" id="select-all-dairy">Select All</button>
+                    <button class="btn btn-outline-secondary btn-sm mb-2" id="clear-dairy">Clear</button>
+                    <div id="dairy-checkboxes"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <input id="submitButton" class="btn btn-primary m-2" type="submit" value="Submit">
+    <button id="clearButton" class="btn btn-secondary m-2">Clear Selections</button> <br>
     
     <div id="content-container">
     </div>
