@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template, url_for
-import random, json
+import random, json, os
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 from bson import json_util
@@ -9,7 +9,7 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 # MongoDB setup
-URI = "mongodb+srv://derasarijayraj:derasarijayraj@fooddeliverydata.o6rvk6j.mongodb.net/?retryWrites=true&w=majority&appName=foodDeliveryData"
+URI = os.environ.get("MONGODB_URI")
 client = MongoClient(URI)
 db = client['mealPlannerDB']
 dishes_collection = db['dishes']

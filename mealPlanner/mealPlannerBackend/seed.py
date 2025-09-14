@@ -1,7 +1,8 @@
 from pymongo import MongoClient
+import os
 
 # MongoDB setup
-URI = "mongodb+srv://derasarijayraj:derasarijayraj@fooddeliverydata.o6rvk6j.mongodb.net/?retryWrites=true&w=majority&appName=foodDeliveryData"
+URI = os.environ.get("MONGODB_URI")
 client = MongoClient(URI)
 db = client['mealPlannerDB']
 dishes_collection = db['dishes']
