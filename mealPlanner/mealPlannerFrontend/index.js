@@ -99,7 +99,7 @@ async function fetchData() {
     });
     let ingredients = selectedIngredients.join(',');
 
-    let url = `http://127.0.0.1:5000/api/meal?cuisine=${cuisine}&meal_type=${meal_type}&cooking_time=${cooking_time}&ingredients=${ingredients}`
+    let url = `/api/meal?cuisine=${cuisine}&meal_type=${meal_type}&cooking_time=${cooking_time}&ingredients=${ingredients}`
     
     let res = await fetch(url)
     let res_json = await res.json()
